@@ -14,8 +14,8 @@ runtime! archlinux.vim
 " Or better yet, read /usr/share/vim/vim72/vimrc_example.vim or the vim manual
 " and configure vim to your own liking!
 
-syntax on
-" set number
+"syntax on
+"set number
 set softtabstop=2
 set shiftwidth=2
 set expandtab
