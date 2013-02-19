@@ -81,5 +81,5 @@ ibus-daemon -n kde -rR &
 
 # KDE
 #
-exec ck-launch-session startkde
+exec startkde
 
