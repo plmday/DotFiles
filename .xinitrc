@@ -1,85 +1,73 @@
 #!/bin/sh
+ 
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# merge in defaults and keymaps
+# Merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
+  xrdb -merge $sysresources
 fi
 
 if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
+  xmodmap $sysmodmap
 fi
 
 if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
+  xrdb -merge "$userresources"
 fi
 
 if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
+  xmodmap "$usermodmap"
 fi
 
-# start some nice programs
-
+# Start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-	for f in /etc/X11/xinit/xinitrc.d/* ; do
-		[ -x "$f" ] && . "$f"
-	done
-	unset f
+  for f in /etc/X11/xinit/xinitrc.d/* ; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
 fi
 
-# twm
+# Set input methods
+
+# IBus
 #
-# twm &
-# xterm -geometry 80x50+494+51 &
-# xterm -geometry 80x20+494-0 &
-# exec xterm -geometry 80x66+0+0 -name login
-
-# parcellite -dn &
-
-export DE=kde  # xfce
-
-# iBus
-#
-export XMODIFIERS="@im=ibus"
+export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
-ibus-daemon -n kde -rR &
+ibus-daemon -rR &
 
-# archwall_color=$(case $(($RANDOM % 9)) in
-#   0) echo "dark_blue"   ;;
-#   1) echo "dark_green"  ;;
-#   2) echo "dark_orange" ;;
-#   3) echo "dark_pink"   ;;
-#   4) echo "dark_purple" ;;
-#   5) echo "dark_red"    ;;
-#   6) echo "dark_toxic"  ;;
-#   7) echo "dark_yellow" ;;
-#   8) echo "light_blue"  ;;
-# esac)
-# feh --bg-fill $(echo ".wallpapers/Arch/archwall_$archwall_color.png") &
-
-# i3 WM
+# SCIM
 #
-# thunar --daemon &
-# exec ck-launch-session dbus-launch i3
+# export XMODIFIERS=@im=SCIM
+# export GTK_IM_MODULE=scim
+# export QT_IM_MODULE=scim
+# scim -d &
 
-# FLWM
+# FCITX
 #
-# flwm &
-# WindowManager=$!
-# wait $WindowManager
+#export XMODIFIERS=@im=fcitx
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#fcitx -r &
 
-# Xfce
-#
-# exec startxfce4 --with-ck-launch
+# Choose a window manager or a desktop system
 
-# KDE
-#
-exec ck-launch-session startkde
+case $1 in
+  cwm)     exec cwm;;
+  e)       exec englightment_start;;
+  goomwwm) exec goomwwm
+  gnome)   exec gnome-session;;
+  kde)     exec startkde;;
+  xfce)    exec startxfce4;;
+  *)       exec i3;;
+esac
 
