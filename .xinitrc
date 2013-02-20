@@ -64,7 +64,7 @@ ibus-daemon -rR &
 case $1 in
   cwm)     exec cwm;;
   e)       exec englightment_start;;
-  goomwwm) exec goomwwm
+  goomwwm) exec goomwwm;;
   gnome)   exec gnome-session;;
   kde)     exec startkde;;
   xfce)    exec startxfce4;;
