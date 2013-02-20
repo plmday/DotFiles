@@ -1,12 +1,12 @@
 ! Swap Caps_Lock and Escape
-!
+
 remove Lock = Caps_Lock
 keysym Caps_Lock = Escape
 keysym Escape = Caps_Lock
 add Lock = Caps_Lock
 
 ! Swap Shift_L and Control_L
-!
+
 remove Shift = Shift_L
 remove Control = Control_L
 keysym Shift_L = Control_L
