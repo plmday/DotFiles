@@ -74,7 +74,7 @@ alias poly="rlwrap poly"
 alias sml="rlwrap sml"
 alias ocaml="rlwrap ocaml"
 
-export PATH=~/.cabal/bin:$PATH
+export PATH=~/scripts:~/.cabal/bin:$PATH
 
 alias ichrome="chromium --incognito"
 
