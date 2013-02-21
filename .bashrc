@@ -24,8 +24,8 @@ alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=au
 alias ll='ls -lh --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias grep='grep --color=tty -d skip'
-alias cp="cp -iv"    # confirm before overwriting something
-alias mv="mv -iv"    # confirm before overwriting something
+alias cp="cp -iuv"    # confirm before overwriting something
+alias mv="mv -iuv"    # confirm before overwriting something
 alias rm="rm -iv"    # confirm before removing something
 alias df='df -h'     # human-readable sizes
 alias free='free -m'    # show sizes in MB
