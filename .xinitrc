@@ -64,13 +64,13 @@ ibus-daemon -rR &
 
 # Choose a window manager or a desktop system
 
-case $1 in
-  cwm)     exec cwm;;
-  e)       exec englightment_start;;
-  goomwwm) exec goomwwm;;
-  gnome)   exec gnome-session;;
-  kde)     exec startkde;;
-  xfce)    exec startxfce4;;
-  *)       exec i3;;
-esac
+exec $(case $WM in
+  cwm)     cwm;;
+  e)       englightment_start;;
+  goomwwm) goomwwm;;
+  gnome)   gnome-session;;
+  kde)     startkde;;
+  xfce)    startxfce4;;
+  i3)      i3;;
+esac)
 
