@@ -73,6 +73,7 @@ alias mosml="rlwrap mosml"
 alias poly="rlwrap poly"
 alias sml="rlwrap sml"
 alias ocaml="rlwrap ocaml"
+alias ocaml="rlwrap coqtop"
 
 export PATH=~/scripts:~/.cabal/bin:$PATH
 
