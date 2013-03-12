@@ -29,7 +29,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -45,7 +45,7 @@ myModMask       = mod4Mask
 --
 -- A tagging example:
 --
-workspaces = ["rule", "work", "surf", "ease" ] ++ map show [5..9]
+myWorkspaces = ["rule", "work", "surf", "ease" ] ++ map show [5..9]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -106,7 +106,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
-    , ((modm,               xK_Enter ), withFocused $ windows . W.sink)
+    , ((modm,               xK_Return), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
     , ((modm,               xK_plus  ), sendMessage (IncMasterN 1))
@@ -127,7 +127,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    , ((modMask .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+    -- , ((modMask .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
     ++
 
