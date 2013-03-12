@@ -72,8 +72,9 @@ exec $(case $WM in
   e)       englightment_start;;
   goomwwm) goomwwm;;
   gnome)   gnome-session;;
+  i3)      i3;;
   kde)     startkde;;
   xfce)    startxfce4;;
-  i3)      i3;;
+  xmonad)  xmonad;;
 esac)
 
