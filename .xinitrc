@@ -33,6 +33,8 @@ xkbcomp -I$HOME/.xkb ~/.xkb/keymap/dreamkm $DISPLAY 2> /dev/null
 
 setxkbmap -option caps:swapescape
 
+xsetroot -cursor_name left_ptr
+
 # Start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
