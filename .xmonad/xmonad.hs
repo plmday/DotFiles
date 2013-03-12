@@ -49,8 +49,8 @@ myWorkspaces = ["rule", "work", "surf", "ease" ] ++ map show [5..9]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#f27b0f"
-myFocusedBorderColor = "#6c9313"
+myNormalBorderColor  = "#5a860a"
+myFocusedBorderColor = "#f27b0f"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -61,7 +61,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_t     ), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_r     ), spawn "dmenu_run")
+    , ((modm,               xK_r     ), spawn "dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -nf '#000000' -sb '#ffd300' -sf '#ffffff'")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
