@@ -27,11 +27,11 @@ if [ -f "$usermodmap" ]; then
   xmodmap "$usermodmap"
 fi
 
-setxkbmap -option caps:swapescape
-
 # Load dream xkbmap
 
 xkbcomp -I$HOME/.xkb ~/.xkb/keymap/dreamkm $DISPLAY 2> /dev/null
+
+setxkbmap -option caps:swapescape
 
 # Start some nice programs
 
