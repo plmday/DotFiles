@@ -282,7 +282,7 @@ myConfig = defaultConfig {
     }
 
 -- Command to launch the bar.
-myBar = "dzen2 -ta l -bg '#b1c75c' -fg '#ffffff' -fn 'Source Code Pro-9:Medium'"
+myBar = "dzen2 -ta l -bg '#b1c75c' -fg '#ffffff' -fn 'Source Code Pro-9:Medium' -e 'onstart=lower'"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP = dzenPP
