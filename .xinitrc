@@ -27,9 +27,13 @@ if [ -f "$usermodmap" ]; then
   xmodmap "$usermodmap"
 fi
 
-setxkbmap -option caps:swapescape
 # Load dream xkbmap
-#xkbcomp -I$HOME/.xkb ~/.xkb/keymap/dreamkm $DISPLAY 2> /dev/null
+
+xkbcomp -I$HOME/.xkb ~/.xkb/keymap/dreamkm $DISPLAY 2> /dev/null
+
+setxkbmap -option caps:swapescape
+
+xsetroot -cursor_name left_ptr
 
 # Start some nice programs
 
@@ -70,8 +74,9 @@ exec $(case $WM in
   e)       englightment_start;;
   goomwwm) goomwwm;;
   gnome)   gnome-session;;
+  i3)      i3;;
   kde)     startkde;;
   xfce)    startxfce4;;
-  i3)      i3;;
+  xmonad)  xmonad;;
 esac)
 

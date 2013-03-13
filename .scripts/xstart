@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export WM=$1
+
+startx
+
