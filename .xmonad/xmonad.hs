@@ -14,6 +14,8 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+import XMonad.Hooks.DynamicLog
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -61,7 +63,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_t     ), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_r     ), spawn "dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'")
+    , ((modm,               xK_r     ), spawn "dmenu_run -b -p 'run:' -fn 'Source Code Pro-9:Medium' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -124,7 +126,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm .|. shiftMask, xK_r     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm .|. shiftMask, xK_r     ), spawn "killall dzen2; xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     -- , ((modMask .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -248,7 +250,7 @@ myStartupHook = return ()
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad defaults
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -256,8 +258,8 @@ main = xmonad defaults
 --
 -- No need to modify this.
 --
-defaults = defaultConfig {
-      -- simple stuff
+myConfig = defaultConfig {
+     -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,
@@ -267,14 +269,35 @@ defaults = defaultConfig {
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
 
-      -- key bindings
+     -- key bindings
         keys               = myKeys,
         mouseBindings      = myMouseBindings,
 
-      -- hooks, layouts
+     -- hooks, layouts
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
         startupHook        = myStartupHook
     }
+
+-- Command to launch the bar.
+myBar = "dzen2 -ta l -bg '#b1c75c' -fg '#ffffff' -fn 'Source Code Pro-9:Medium'"
+
+-- Custom PP, configure it as you like. It determines what is being written to the bar.
+myPP = dzenPP
+  { ppCurrent  = dzenColor "#000000" "#ffd300" . pad
+  , ppHidden   = dzenColor "#ffffff" "#b1c75c" . pad
+  , ppLayout   = dzenColor "#000000" "#b1c75c" .
+                   (\ x -> pad $ case x of
+                      "Tall"        -> "[|]"
+                      "Mirror Tall" -> "[-]"
+                      "Full"        -> "[ ]"
+                      _             -> x
+                   )
+  , ppTitle    = dzenColor "#000000" "#b1c75c" . pad
+  }
+
+-- Key binding to toggle the gap for the bar.
+toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+
