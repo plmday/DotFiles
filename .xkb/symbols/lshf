@@ -1,6 +1,6 @@
 partial modifier_keys
 xkb_symbols "swaplctl" {
-  key <LCTL> { [ Shift_L ] };
-  key <LFSH> { [ Control_L ] };
+  replace key <LCTL> { [ Shift_L ] };
+  replace key <LFSH> { [ Control_L ] };
 };
 
