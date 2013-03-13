@@ -48,24 +48,24 @@ fi
 
 # IBus
 #
-export XMODIFIERS=@im=ibus
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -rR &
+#export XMODIFIERS="@im=ibus"
+#export GTK_IM_MODULE=ibus
+#export QT_IM_MODULE=ibus
+#ibus-daemon -rR &
 
 # SCIM
 #
-# export XMODIFIERS=@im=SCIM
+# export XMODIFIERS="@im=SCIM"
 # export GTK_IM_MODULE=scim
 # export QT_IM_MODULE=scim
 # scim -d &
 
 # FCITX
 #
-#export XMODIFIERS=@im=fcitx
-#export GTK_IM_MODULE=fcitx
-#export QT_IM_MODULE=fcitx
-#fcitx -r &
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+fcitx -r &
 
 # Choose a window manager or a desktop system
 
