@@ -63,7 +63,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_e     ), spawn "dmenu_run -b -p 'exec' -fn 'Source Code Pro-9:Medium' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'")
+    , ((modm,               xK_e     ), spawn "dmenu_run -b -p 'exec' -fn 'Akashi-10:Normah' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'")
 
     -- launch gmrun
     -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -282,7 +282,7 @@ myConfig = defaultConfig {
     }
 
 -- Command to launch the bar.
-myBar = "dzen2 -ta l -bg '#b1c75c' -fg '#ffffff' -fn 'Source Code Pro-9:Medium' -e 'onstart=lower'"
+myBar = "dzen2 -ta l -bg '#b1c75c' -fg '#ffffff' -fn 'Akashi-10:Normah' -e 'onstart=lower'"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP = dzenPP
