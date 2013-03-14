@@ -60,7 +60,7 @@ myFocusedBorderColor = "#f27b0f"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm,               xK_t), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
     , ((modm,               xK_e     ), spawn "dmenu_run -b -p 'exec' -fn 'Akashi-10:Normah' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'")
@@ -93,7 +93,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_m     ), windows W.focusMaster  )
 
     -- Swap the focused window and the master window
-    , ((modm .|. shiftMask, xK_m     ), windows W.swapMaster)
+    , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
@@ -108,7 +108,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    , ((modm,               xK_Return), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
     , ((modm,               xK_plus  ), sendMessage (IncMasterN 1))
