@@ -16,17 +16,18 @@ import qualified Data.Map        as M
 
 import XMonad.Hooks.DynamicLog
 
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
 myTerminal      = "evilvte"
 
 -- Whether focus follows the mouse pointer.
-myFocusFollowsMouse :: Bool
+--
 myFocusFollowsMouse = True
 
 -- Whether clicking on a window to focus also passes the click to the window
-myClickJustFocuses :: Bool
+--
 myClickJustFocuses = False
 
 -- Width of the window border in pixels.
@@ -51,22 +52,18 @@ myWorkspaces = ["rule", "work", "surf", "ease" ] ++ map show [5..9]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#5a860a"
-myFocusedBorderColor = "#f27b0f"
+myNormalBorderColor  = bodhiGreen1
+myFocusedBorderColor = bodhiOrange
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
-
     -- launch a terminal
-    [ ((modm,               xK_t), spawn $ XMonad.terminal conf)
+    [ ((modm,               xK_t     ), spawn $ XMonad.terminal conf)
 
-    -- launch dmenu
-    , ((modm,               xK_e     ), spawn "dmenu_run -b -p 'exec' -fn 'Akashi-10:Normah' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'")
-
-    -- launch gmrun
-    -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    -- launch a launcher
+    , ((modm,               xK_e     ), spawn myLauncher)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -90,7 +87,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_k     ), windows W.focusUp  )
 
     -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster  )
+    , ((modm,               xK_m     ), windows W.focusMaster)
 
     -- Swap the focused window and the master window
     , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
@@ -131,18 +128,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     -- , ((modMask .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
+
     ++
 
-    --
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
     --
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+    ]
+
     -- ++
 
-    --
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
@@ -150,12 +148,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
     --    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
+-- Command to launch a launcher
+--
+myLauncher = "dmenu_run -b -p 'exec' -fn 'Akashi-10:Normah' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
-
     -- mod-button1, Set the window to floating mode and move by dragging
     [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
                                        >> windows W.shiftMaster))
@@ -214,7 +214,8 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -243,6 +244,7 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+--
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
@@ -259,45 +261,59 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 -- No need to modify this.
 --
 myConfig = defaultConfig {
-     -- simple stuff
-        terminal           = myTerminal,
-        focusFollowsMouse  = myFocusFollowsMouse,
-        clickJustFocuses   = myClickJustFocuses,
-        borderWidth        = myBorderWidth,
-        modMask            = myModMask,
-        workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
+    -- simple stuff
+       terminal           = myTerminal,
+       focusFollowsMouse  = myFocusFollowsMouse,
+       clickJustFocuses   = myClickJustFocuses,
+       borderWidth        = myBorderWidth,
+       modMask            = myModMask,
+       workspaces         = myWorkspaces,
+       normalBorderColor  = myNormalBorderColor,
+       focusedBorderColor = myFocusedBorderColor,
 
-     -- key bindings
-        keys               = myKeys,
-        mouseBindings      = myMouseBindings,
+    -- key bindings
+       keys               = myKeys,
+       mouseBindings      = myMouseBindings,
 
-     -- hooks, layouts
-        layoutHook         = myLayout,
-        manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
-        logHook            = myLogHook,
-        startupHook        = myStartupHook
+    -- hooks, layouts
+       layoutHook         = myLayout,
+       manageHook         = myManageHook,
+       handleEventHook    = myEventHook,
+       logHook            = myLogHook,
+       startupHook        = myStartupHook
     }
 
 -- Command to launch the bar.
+--
 myBar = "dzen2 -ta l -bg '#b1c75c' -fg '#ffffff' -fn 'Akashi-10:Normah' -e 'onstart=lower'"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
+--
 myPP = dzenPP
-  { ppCurrent  = dzenColor "#000000" "#ffd300" . pad
-  , ppHidden   = dzenColor "#ffffff" "#b1c75c" . pad
-  , ppLayout   = dzenColor "#000000" "#b1c75c" .
+  { ppCurrent  = dzenColor black bodhiYellow . pad
+  , ppHidden   = dzenColor white bodhiGreen0 . pad
+  , ppLayout   = dzenColor black bodhiGreen0 .
                    (\ x -> pad $ case x of
-                      "Tall"        -> "[|]"
-                      "Mirror Tall" -> "[-]"
-                      "Full"        -> "[ ]"
-                      _             -> x
-                   )
-  , ppTitle    = dzenColor "#000000" "#b1c75c" . pad
+                      "Tall"        -> icon "tall.xpm"
+                      "Mirror Tall" -> icon "mirror-tall.xpm"
+                      "Full"        -> icon "full.xpm"
+                      _             -> x )
+  , ppTitle    = dzenColor black bodhiGreen0 . pad
   }
+  where icon c = "^i(/home/day/.xmonad/" ++ c ++ ")"
 
 -- Key binding to toggle the gap for the bar.
+--
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+
+-- Bodhi Color Pallet
+-- http://www.bodhilinux.com/images/colorguide.svg
+--
+bodhiYellow = "#ffd300"
+bodhiGreen0 = "#b1c75c"
+bodhiGreen1 = "#5a860a"
+bodhiOrange = "#f27b0f"
+
+black       = "#000000"
+white       = "#ffffff"
 
