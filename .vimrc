@@ -22,4 +22,4 @@ set expandtab
 set textwidth=78
 
 nmap :Q :qa
-imap <ESC> <ESC>:diffu<CR>
+imap <Esc> <Esc>:diffu<CR>
