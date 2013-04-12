@@ -21,5 +21,7 @@ set shiftwidth=2
 set expandtab
 set textwidth=78
 
+map j gj
+map k gk
 nmap :Q :qa
 autocmd CursorMoved,CursorMovedI * diffupdate
