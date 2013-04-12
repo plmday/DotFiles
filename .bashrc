@@ -57,8 +57,8 @@ ex ()
 }
 
 # vim stuff
-export EDITOR=diffvim
-export VISUAL=diffvim
+export EDITOR=difvim
+export VISUAL=difvim
 alias vi=vim
 set -o vi
 
