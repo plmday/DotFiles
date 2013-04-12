@@ -22,4 +22,4 @@ set expandtab
 set textwidth=78
 
 nmap :Q :qa
-imap <Esc> <Esc>:diffu<CR>
+autocmd CursorMoved,CursorMovedI * diffupdate
