@@ -57,8 +57,8 @@ ex ()
 }
 
 # vim stuff
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=diffvim
+export VISUAL=diffvim
 alias vi=vim
 set -o vi
 
@@ -74,6 +74,7 @@ alias poly="rlwrap poly"
 alias sml="rlwrap sml"
 alias ocaml="rlwrap ocaml"
 alias coqtop="rlwrap coqtop"
+alias Self="rlwrap Self"
 
 alias dmenu_run="dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
 alias ichrome="google-chrome --incognito"
