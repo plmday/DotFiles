@@ -1,0 +1,12 @@
+#!/bin/sh
+
+TMPDIR=/tmp/diffvim
+FILENM=$1
+FILEBN=$(basename $FILENM)
+
+if [ ! -d "$TMPDIR" ]; then
+  mkdir $TMPDIR
+fi
+
+cp $FILENM $TMPDIR/$FILEBN && vimdiff $FILENM $TMPDIR/$FILEBN
+
