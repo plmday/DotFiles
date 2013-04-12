@@ -74,6 +74,7 @@ alias poly="rlwrap poly"
 alias sml="rlwrap sml"
 alias ocaml="rlwrap ocaml"
 alias coqtop="rlwrap coqtop"
+alias irb="rlwrap irb"
 
 alias dmenu_run="dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
 alias ichrome="google-chrome --incognito"
