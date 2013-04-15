@@ -24,6 +24,7 @@ set textwidth=78
 map j gj
 map k gk
 nmap :Q :qa
+nmap :W :wa
 
 if &diff
   autocmd CursorMoved,CursorMovedI * diffupdate
