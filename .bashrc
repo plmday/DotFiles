@@ -78,6 +78,8 @@ alias irb="rlwrap irb"
 alias Self="rlwrap Self"
 
 alias dmenu_run="dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
+
 alias ichrome="google-chrome --incognito"
+alias ichromium="chromium --incognito"
 
 export PATH=~/.scripts:~/.cabal/bin:$PATH
