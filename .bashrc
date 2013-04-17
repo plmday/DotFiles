@@ -83,3 +83,5 @@ alias ichrome="google-chrome --incognito"
 alias ichromium="chromium --incognito"
 
 export PATH=~/.scripts:~/.cabal/bin:$PATH
+
+#export TERM=xterm-256color
