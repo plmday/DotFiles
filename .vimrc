@@ -24,13 +24,14 @@ set textwidth=78
 map j gj
 map k gk
 nmap :Q :qa
+nmap :W :wa
 
-autocmd CursorMoved,CursorMovedI * diffupdate
-"if &diff
+if &diff
+  autocmd CursorMoved,CursorMovedI * diffupdate
 " colorscheme evening
-"endif
-"highlight! link DiffText MatchParen
-"set diffopt+=iwhite
+" highlight! link DiffText MatchParen
+" set diffopt+=iwhite
+endif
 
 "let g:solarized_termcolors=256
 "set background=dark
