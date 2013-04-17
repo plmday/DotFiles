@@ -57,8 +57,8 @@ ex ()
 }
 
 # vim stuff
-export EDITOR=difvim
-export VISUAL=difvim
+export EDITOR=diffvim
+export VISUAL=diffvim
 alias vi=vim
 set -o vi
 
@@ -81,5 +81,3 @@ alias dmenu_run="dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -n
 alias ichrome="google-chrome --incognito"
 
 export PATH=~/.scripts:~/.cabal/bin:$PATH
-
-

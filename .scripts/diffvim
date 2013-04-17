@@ -2,7 +2,7 @@
 
 # Differentially Viming
 
-TMPDIR=/tmp/difvim
+TMPDIR=/tmp/diffvim
 FILENM=$1
 FILEBN=$(basename $FILENM)
 
