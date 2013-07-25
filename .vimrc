@@ -19,7 +19,7 @@ syntax on
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-set textwidth=78
+"set textwidth=78
 
 map j gj
 map k gk
