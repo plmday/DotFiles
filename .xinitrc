@@ -31,7 +31,7 @@ fi
 #
 #xkbcomp -I$HOME/.xkb ~/.xkb/keymap/dreamkm $DISPLAY 2> /dev/null
 
-setxkbmap -option caps:swapescape
+setxkbmap de -variant nodeadkeys -option ctrl:swapcaps
 
 xsetroot -cursor_name left_ptr
 
