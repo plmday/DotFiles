@@ -57,8 +57,8 @@ ex ()
 }
 
 # vim stuff
-export EDITOR="vim"  # export EDITOR="emacs -nw"
-export VISUAL="vim"  # export VISUAL="emacs -nw"
+export EDITOR="vim"  # EDITOR="emacs -nw"
+export VISUAL="vim"  # VISUAL="emacs -nw"
 alias vi=vim
 set -o vi
 
@@ -76,9 +76,12 @@ alias ocaml="rlwrap ocaml"
 alias coqtop="rlwrap coqtop"
 alias irb="rlwrap irb"
 alias Self="rlwrap Self"
-alias twelf="rlwrap twelf-server"
+alias twelf-server="rlwrap twelf-server"
+alias bp="rlwrap bp -l"
+alias xsb="rlwrap xsb"
+alias yap="rlwrap yap"
 
-alias dmenu_run="dmenu_run -p 'run:' -fn 'Ubuntu Mono-9:normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
+alias dmenu_run="dmenu_run -p 'run:' -fn 'Akashi-11:Normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
 
 alias ichrome="google-chrome --incognito"
 alias ichromium="chromium --incognito"
@@ -88,7 +91,7 @@ export TERM=rxvt-256color
 export LOGTALKHOME=$HOME/apps/logtalk/share/logtalk
 export LOGTALKUSER=$HOME/.logtalk
 
-export PATH=~/.scripts:~/.cabal/bin:~/apps/twelf/bin::~/apps/logtalk/bin:$LOGTALKHOME/tools/lgtdoc/xml:$LOGTALKHOME/scripts:$LOGTALKHOME/integration:$PATH
+export PATH=~/.scripts:~/.cabal/bin:~/apps/twelf/bin:~/apps/XSB/bin:~/apps/yap/bin:~/apps/logtalk/bin:$LOGTALKHOME/tools/lgtdoc/xml:$LOGTALKHOME/scripts:$LOGTALKHOME/integration:$PATH
 export MANPATH=$LOGTALKHOME/man
 
 # save path on cd
