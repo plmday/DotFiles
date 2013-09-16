@@ -31,7 +31,7 @@ fi
 #
 #xkbcomp -I$HOME/.xkb ~/.xkb/keymap/dreamkm $DISPLAY 2> /dev/null
 
-setxkbmap -option caps:swapescape
+setxkbmap de -variant nodeadkeys -option ctrl:swapcaps
 
 xsetroot -cursor_name left_ptr
 
@@ -48,10 +48,10 @@ fi
 
 # IBus
 #
-#export XMODIFIERS="@im=ibus"
-#export GTK_IM_MODULE=ibus
-#export QT_IM_MODULE=ibus
-#ibus-daemon -rR &
+export XMODIFIERS="@im=ibus"
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -rR &
 
 # SCIM
 #
@@ -62,10 +62,14 @@ fi
 
 # FCITX
 #
-export XMODIFIERS="@im=fcitx"
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-fcitx -r &
+#export XMODIFIERS="@im=fcitx"
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#fcitx -r &
+
+# URxvt daemon
+
+urxvtd &
 
 # Choose a window manager or a desktop system
 
