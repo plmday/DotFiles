@@ -19,7 +19,7 @@ syntax on
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-set textwidth=78
+"set textwidth=78
 
 map j gj
 map k gk
@@ -33,6 +33,7 @@ if &diff
 " set diffopt+=iwhite
 endif
 
-"let g:solarized_termcolors=256
-"set background=dark
-"colorscheme solarized
+set nocompatible
+set background=dark " dark | light "
+colorscheme solarized
+

@@ -20,7 +20,7 @@ import XMonad.Hooks.DynamicLog
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "evilvte"
+myTerminal      = "urxvtc"
 
 -- Whether focus follows the mouse pointer.
 --
@@ -150,7 +150,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 -- Command to launch a launcher
 --
-myLauncher = "dmenu_run -b -p 'exec' -fn 'Akashi-10:Normah' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
+myLauncher = "dmenu_run -b -p 'exec' -fn 'Akashi-10:Normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
