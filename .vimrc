@@ -33,7 +33,7 @@ if &diff
 " set diffopt+=iwhite
 endif
 
-set nocompatible
 set background=dark " dark | light "
 colorscheme solarized
 
+"set formatprg=par\ 78j
