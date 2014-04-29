@@ -82,7 +82,7 @@ alias xsb='rlwrap xsb'
 alias yap='rlwrap yap'
 alias chibi='rlwrap chibi-scheme'
 
-alias dmenu_run="dmenu_run -p 'run:' -fn 'Akashi-11:Normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
+alias dmenu_run="dmenu_run -p 'run:' -fn 'Optimus-12:Normal' -nb '#b1c75c' -nf '#ffffff' -sb '#ffd300' -sf '#000000'"
 
 alias ichrome='google-chrome --incognito'
 alias ichromium='chromium --incognito'
@@ -93,7 +93,7 @@ export LOGTALKHOME="${HOME}"/apps/logtalk/share/logtalk
 export LOGTALKUSER="${HOME}"/.logtalk
 
 export PATH=~/.scripts:~/.cabal/bin:~/apps/twelf/bin:~/apps/XSB/bin:~/apps/yap/bin:~/apps/logtalk/bin:"${LOGTALKHOME}"/tools/lgtdoc/xml:"${LOGTALKHOME}"/scripts:"${LOGTALKHOME}"/integration:"${PATH}"
-export MANPATH="${LOGTALKHOME}"/man
+export MANPATH="${LOGTALKHOME}"/man:"${MANPATH}"
 
 # save path on cd
 function cd {
